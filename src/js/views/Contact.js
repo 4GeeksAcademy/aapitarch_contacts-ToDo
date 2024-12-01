@@ -6,6 +6,11 @@ export const Contact = () => {
 
     const { store } = useContext(Context);
 
+    const handleRemoveContacat = (index) => {
+        const contactToDelete = contacts[index];
+        deleteContact(contactToDelete.id);
+    };
+
     return (
         <div className="list-group list-group-item d-flex mt-5 container">
             {
@@ -14,13 +19,13 @@ export const Contact = () => {
                         <div className="user my-auto"><i className="fa-solid fa-user user1"></i></div>
                         <div className="d-block">
                             <div className="mb-2"><h5>{contact.name}</h5></div>
-                            <div className="mb-2"><i class="fa-solid fa-phone"></i> +34 {contact.phone}</div>
-                            <div className="mb-2"><i class="fa-solid fa-envelope"></i> {contact.email}</div>
+                            <div className="mb-2"><i className="fa-solid fa-phone"></i>{contact.phone}</div>
+                            <div className="mb-2"><i className="fa-solid fa-envelope"></i> {contact.email}</div>
                             <div><i className="mb-2 fa-solid fa-location-dot"></i> {contact.address}</div>
                         </div>
                         <div>
-                            <button className="btn btn-dark border border-warning m-1" onClick={() => { }}><i class="fa-solid fa-pen"></i></button>
-                            <button className="btn btn-dark border border-danger m-1" onClick={() => { }}><i class="fa-solid fa-x"></i></button>
+                            <button className="btn btn-dark border border-warning m-1" onClick={() => { }}><i className="fa-solid fa-pen"></i></button>
+                            <button className="btn btn-dark border border-danger m-1" onClick={handleRemoveContacat }><i className="fa-solid fa-x"></i></button>
                         </div>
 
                     </div>
