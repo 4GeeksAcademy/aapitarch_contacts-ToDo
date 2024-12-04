@@ -41,6 +41,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
+			updateContact: (id, updateContact) => {
+				const store = getStore();
+
+				fetch(`https://playground.4geeks.com/contact/agendas/aapitarch/contacts/${id}`, {
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(updateContact)
+				}).then(resp => resp.json()).then((respJson) => {
+					// recorre todos los contactos y cuando lo encuentre lo actualizas		
+					const updateContacts = store.contacts.map(contact => contact.id === parseInt(id) ? respJson : contact); // si me viene el contacto se retorna actualizado
+					setStore({ contacts: [...updateContacts]});
+				})
+			},
+
 			deleteContact: (id) => {
 				const store = getStore();
 				const contacts = store.contacts;
@@ -55,7 +71,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const newContact = contacts.filter(item => item.id !== id);
 					setStore({contacts: newContact});
 				})
-
 			}
 		}
 	};

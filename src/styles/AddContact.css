@@ -1,0 +1,75 @@
+/* Contenedor de la página */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px;
+    background-color: #f9f9f9; 
+}
+
+/* Encabezado */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; 
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Contenedor de botones */
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Espaciado entre botones */
+}
+
+/* Botones */
+.button1, .btn {
+    flex: 1; /* Ambos botones tienen el mismo tamaño */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button1:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Botón de "Back home" */
+.btn-primary {
+    margin-top: 15px;
+    background-color: #6c757d;
+}
+
+.btn-primary:hover {
+    background-color: #5a6268;
+}

@@ -1,11 +1,25 @@
-import React, { useContext } from "react"
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react"
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/AddContact.css";
 
 export const AddContact = () => {
 
-    const { actions } = useContext(Context);
+    const { actions, store } = useContext(Context);
+    const { id } = useParams();
 
+    useEffect(() => {
+        if (id) {
+            const contact = store.contacts.find(contact => contact.id === parseInt(id));
+            if (contact) {
+                document.getElementsByName("name")[0].value = contact.name;
+                document.getElementsByName("phone")[0].value = contact.phone;
+                document.getElementsByName("email")[0].value = contact.email;
+                document.getElementsByName("address")[0].value = contact.address;
+            }
+        }
+    }, [id, store.contacts]);
+    
     function handleAddContact(e) {
         e.preventDefault();
         
@@ -14,14 +28,19 @@ export const AddContact = () => {
         const email = e.target.elements.email.value;
         const address = e.target.elements.address.value;
 
-        actions.addContact({ name, phone, email, address });
+        if(id) {
+            actions.updateContact(id, {name, phone, email, address});
+        } else {
+            actions.addContact({ name, phone, email, address });
+        }
+
         e.target.reset();
     }
 
     return (
-        <div>
-            <h1>Pagina de añadir contacto</h1>
-            <form onSubmit={handleAddContact} className="form mx-auto">
+        <div className="page-container">
+            <h1>{id ? "Editar contacto" : "Añadir contacto"}</h1>
+            <form onSubmit={handleAddContact} className="form-container">
                 <div className="mb-3">
                     <label className="form-label">Nombre completo:</label>
                     <input type="text" name="name" className="form-control" placeholder="Nombre completo" required/>
@@ -43,7 +62,6 @@ export const AddContact = () => {
                 </div>
             </form>
 
-            <hr />
             <Link to="/">
                 <button className="btn btn-primary">Back home</button>
             </Link>

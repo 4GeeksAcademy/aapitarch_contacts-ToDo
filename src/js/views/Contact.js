@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-//import "../../styles/home.css";
+import { Link } from "react-router-dom";
+import "../../styles/Contact.css";
 
 export const Contact = () => {
 
-    const { store } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     const handleRemoveContacat = (index) => {
-        const contactToDelete = contacts[index];
-        deleteContact(contactToDelete.id);
+        actions.deleteContact(index);
     };
 
     return (
-        <div className="list-group list-group-item d-flex mt-5 container">
+        <div className="container">
             {
                 store.contacts.map((contact) => (
-                    <div className="d-flex justify-content-between contact mx-auto" key={contact}>
-                        <div className="user my-auto"><i className="fa-solid fa-user user1"></i></div>
+                    <div className="contact" key={contact.id}>
+                        <div className="user"><i className="fa-solid fa-user user1"></i></div>
                         <div className="d-block">
                             <div className="mb-2"><h5>{contact.name}</h5></div>
                             <div className="mb-2"><i className="fa-solid fa-phone"></i>{contact.phone}</div>
@@ -24,10 +24,11 @@ export const Contact = () => {
                             <div><i className="mb-2 fa-solid fa-location-dot"></i> {contact.address}</div>
                         </div>
                         <div>
-                            <button className="btn btn-dark border border-warning m-1" onClick={() => { }}><i className="fa-solid fa-pen"></i></button>
-                            <button className="btn btn-dark border border-danger m-1" onClick={handleRemoveContacat }><i className="fa-solid fa-x"></i></button>
+                            <Link to={`/addContact/${contact.id}`}>
+                                <button className="btn btn-dark border border-warning"><i className="fa-solid fa-pen"></i></button>
+                            </Link>
+                            <button className="btn btn-dark border border-danger" onClick={() => {handleRemoveContacat(contact.id)}}><i className="fa-solid fa-x"></i></button>
                         </div>
-
                     </div>
                 ))
             }

@@ -1,0 +1,100 @@
+/* Contenedor principal de la lista */
+.container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para cada contacto */
+.contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.contact:hover {
+    transform: scale(1.02);
+}
+
+/* Icono de usuario */
+.user {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user1 {
+    font-size: 50px; /* Tamaño más grande */
+    color: #007bff;
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 50%; /* Efecto redondo */
+    border: 2px solid #ccc;
+}
+
+/* Información del contacto */
+.d-block {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding-left: 10px;
+}
+
+.d-block h5 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.d-block div {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.d-block div i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+/* Botones */
+button {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-dark {
+    background-color: #343a40;
+    border: 1px solid transparent;
+    color: #fff;
+}
+
+.btn-dark.border-warning {
+    border-color: #ffc107;
+}
+
+.btn-dark.border-danger {
+    border-color: #dc3545;
+}
+
+button:hover {
+    background-color: #007bff;
+}
+
+/* Contenedor de botones */
+.contact > div:last-child {
+    display: flex;
+    flex-direction: column; /* Alinea los botones verticalmente */
+    gap: 10px; /* Espaciado entre botones */
+}

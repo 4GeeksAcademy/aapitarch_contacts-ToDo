@@ -23,6 +23,7 @@ const Layout = () => {
 					<Navbar />
 					<Routes>
 						<Route path="/" element={<Contact />} />
+						<Route path="/addContact/:id" element={<AddContact />} /> 
 						<Route path="/addContact" element={<AddContact />} /> 
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
